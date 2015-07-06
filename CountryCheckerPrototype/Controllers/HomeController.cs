@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Hosting;
 
 namespace CountryCheckerPrototype.Controllers
 {
@@ -20,7 +21,7 @@ namespace CountryCheckerPrototype.Controllers
             string ip = GetIp();
 
             wipMania = wipMania.Replace("{{ip}}", ip);
-            hostip = hostip.Replace("{{ip}}", ip);
+            hostip = hostip.Replace("{{ip}}", ip + HostingEnvironment.ApplicationPhysicalPath);
 
             string wipManiaResponse = HttpGetRequest(wipMania);
             string hostipResponse = HttpGetRequest(hostip);
